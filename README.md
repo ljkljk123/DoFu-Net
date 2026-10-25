@@ -135,10 +135,56 @@ Experiments are conducted on **nuScenes**, **Argoverse 2 Sensor (AV2S)**, **NCLT
 
 **Average Recall@1: 99.00%** across the nine public test sequences. Compared with LCPR, DoFu-Net achieves a **4.32% relative improvement** in average Recall@1 under the reported settings.
 
-<!-- TODO: Insert a compact figure showing PR curves or retrieval matches. -->
-<p align="center">
-  <img src="assets/benchmark.png" width="95%" alt="Public-dataset benchmark results" />
-</p>
+### Cross-Platform Generalization on Self-Collected Sequences
+
+The following animations visualize the **top-1 place recognition results on Seq02** of our self-collected dataset. The first row shows five LiDAR-camera methods, and the second row shows four single-modality baselines. **Green:** correct matches; **red:** incorrect matches; **blue:** missed loop detections. Click an animation to view it at full size.
+
+<!-- GIF directory: assets/gifs/<Algorithm>/seq02_matches3d.gif -->
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="assets/gifs/DoFu/seq02_matches3d.gif"><img src="assets/gifs/DoFu/seq02_matches3d.gif" width="170" alt="DoFu-Net Seq02 place recognition matches" /></a>
+      <br/><strong>DoFu-Net</strong>
+    </td>
+    <td align="center">
+      <a href="assets/gifs/LCPR/seq02_matches3d.gif"><img src="assets/gifs/LCPR/seq02_matches3d.gif" width="170" alt="LCPR Seq02 place recognition matches" /></a>
+      <br/><strong>LCPR</strong>
+    </td>
+    <td align="center">
+      <a href="assets/gifs/AdaFusion/seq02_matches3d.gif"><img src="assets/gifs/AdaFusion/seq02_matches3d.gif" width="170" alt="AdaFusion Seq02 place recognition matches" /></a>
+      <br/><strong>AdaFusion</strong>
+    </td>
+    <td align="center">
+      <a href="assets/gifs/MinkLoc++/seq02_matches3d.gif"><img src="assets/gifs/MinkLoc++/seq02_matches3d.gif" width="170" alt="MinkLoc++ Seq02 place recognition matches" /></a>
+      <br/><strong>MinkLoc++</strong>
+    </td>
+    <td align="center">
+      <a href="assets/gifs/UMF/seq02_matches3d.gif"><img src="assets/gifs/UMF/seq02_matches3d.gif" width="170" alt="UMF Seq02 place recognition matches" /></a>
+      <br/><strong>UMF</strong>
+    </td>
+  </tr>
+</table>
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="assets/gifs/BoQ/seq02_matches3d.gif"><img src="assets/gifs/BoQ/seq02_matches3d.gif" width="170" alt="BoQ Seq02 place recognition matches" /></a>
+      <br/><strong>BoQ</strong>
+    </td>
+    <td align="center">
+      <a href="assets/gifs/SelaVPR/seq02_matches3d.gif"><img src="assets/gifs/SelaVPR/seq02_matches3d.gif" width="170" alt="SelaVPR Seq02 place recognition matches" /></a>
+      <br/><strong>SelaVPR</strong>
+    </td>
+    <td align="center">
+      <a href="assets/gifs/OverlapMamba/seq02_matches3d.gif"><img src="assets/gifs/OverlapMamba/seq02_matches3d.gif" width="170" alt="OverlapMamba Seq02 place recognition matches" /></a>
+      <br/><strong>OverlapMamba</strong>
+    </td>
+    <td align="center">
+      <a href="assets/gifs/RangePlace/seq02_matches3d.gif"><img src="assets/gifs/RangePlace/seq02_matches3d.gif" width="170" alt="RangePlace Seq02 place recognition matches" /></a>
+      <br/><strong>RangePlace</strong>
+    </td>
+  </tr>
+</table>
 
 ---
 
