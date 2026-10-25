@@ -63,10 +63,10 @@ Building on the spherical three-view representation developed in our previous [D
 
 <!-- TODO: Export the AFL/WBG architecture or create its animation. -->
 <p align="center">
-  <img src="assets/LiDAR.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
+  <img src="assets/图片3.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
 </p>
 <p align="center">
-  <img src="assets/图片3.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
+  <img src="assets/A1.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
 </p>
 
 ### 2. Panoramic Local Continuity Graph (LCG)
