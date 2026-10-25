@@ -30,7 +30,7 @@
 
 > **Paper status:** Manuscript under revision for *ISPRS Journal of Photogrammetry and Remote Sensing*.
 >
-> **Repository status:** This README is a project-page draft. Source-code commands, checkpoints, and download links will be added after the repository is organized.
+> **Repository status:** The nuScenes source implementation and usage instructions are available in this release. Trained checkpoints and the other dataset adapters will be added separately.
 
 ---
 
@@ -199,63 +199,161 @@ The following animations visualize the **top-1 place recognition results on Seq0
 
 Datasets must be obtained independently from their respective providers. Please follow the original providers' licenses and usage terms.
 
-<!-- TODO: Add download instructions and the repository's data-preprocessing layout. -->
+For nuScenes metadata generation, database/query splits, and LiDAR three-view preprocessing, see [Dataset Preparation (nuScenes)](#dataset-preparation-nuscenes) below.
 
 ---
 
 ## 📦 Installation & Usage
 
-> **Pending repository integration.** The commands below should be populated from the actual released code, rather than guessed from the paper.
+This repository contains the **nuScenes implementation** of DoFu-Net. The code covers LiDAR spherical three-view preprocessing, multi-camera loading, training, feature extraction, and place-recognition evaluation on BS, SON, and SHV. It does **not** yet include the AV2S, NCLT, or self-collected dataset adapters. No dataset or pretrained DoFu-Net checkpoint is bundled with the code.
 
 ### Environment
 
-The following versions are taken from the exported Conda environment (`dome`) and pip package list.
+The reported environment was exported from the authors' Conda installation; the OS release was not recorded in the export.
 
-- **OS:** Linux (distribution and release version not recorded in the environment exports)
-- **Conda environment:** `dome`
+- **OS:** Linux (distribution/version not available in the environment export)
 - **Python:** 3.10.13
-- **PyTorch:** 2.1.1+cu118
-- **TorchVision / TorchAudio:** 0.16.1+cu118 / 2.1.1+cu118
-- **CUDA:** 11.8 (PyTorch CUDA build; Conda `cuda-cudart` 11.8.89)
-- **FAISS:** `faiss-gpu` 1.8.0
-- **Numerical and scientific packages:** NumPy 1.26.2, SciPy 1.11.4, pandas 2.1.3, scikit-learn 1.3.2
-- **Deep-learning and image-processing packages:** timm 0.9.2, einops 0.7.0, OpenCV 4.8.1.78, Pillow 10.1.0
-- **Dataset and utility packages:** nuscenes-devkit 1.1.10, h5py 3.7.0, PyYAML 6.0.1, tqdm 4.66.1
-- Training hardware reported in the paper: **NVIDIA RTX 4060 GPU**
+- **PyTorch / TorchVision:** 2.1.1+cu118 / 0.16.1+cu118
+- **CUDA:** PyTorch CUDA 11.8 build
+- **FAISS:** faiss-gpu 1.8.0
+- **Key packages:** timm 0.9.2, NumPy 1.26.2, SciPy 1.11.4, scikit-learn 1.3.2, h5py 3.7.0, nuscenes-devkit 1.1.10, OpenCV 4.8.1.78, safetensors 0.4.1
+- **Training GPU reported in the paper:** NVIDIA RTX 4060
 
-**Note:** These are installed versions observed in the provided environment exports, not a verified minimal dependency list. The full export also contains machine-specific paths and additional packages; portable installation instructions will be finalized with the released code.
+The following commands are a portable *installation starting point* based on the exported versions; installation on a new machine has not yet been verified end to end. A compatible NVIDIA GPU driver is required for CUDA acceleration.
+
+```bash
+conda create -n dofunet python=3.10.13 -y
+conda activate dofunet
+
+# PyTorch CUDA 11.8 wheels (the author's original PyTorch build).
+python -m pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 \
+  --index-url https://download.pytorch.org/whl/cu118
+
+# FAISS GPU availability can depend on your Linux architecture and channels.
+conda install -c pytorch -c conda-forge faiss-gpu=1.8.0
+
+# Remaining Python packages from the exported environment.
+python -m pip install -r requirements.txt
+```
 
 ### Repository Setup
 
-```bash
-# TODO: Add verified repository clone and environment setup commands.
-```
-
-### Dataset Preparation
+Clone this repository after publishing it to GitHub, then run all following commands from its root directory:
 
 ```bash
-# TODO: Add verified dataset preprocessing / configuration commands.
+# Replace <YOUR_GITHUB_REPOSITORY_URL> with the published DoFu-Net repository URL.
+git clone <YOUR_GITHUB_REPOSITORY_URL> DoFu-Net-nuScenes
+cd DoFu-Net-nuScenes
+
+# Verify the installed packages and project imports.
+python -m scripts.verify_imports
 ```
+
+The code is organized as follows:
+
+```text
+DoFu-Net-nuScenes/
+├── config/config.yaml              # Paths and training hyperparameters
+├── dataset/NuScenesDataset.py      # LiDAR and six-camera data loaders
+├── modules/DoFuNet.py              # DoFu-Net architecture
+├── modules/netvlad.py              # NetVLAD descriptor head
+├── tools/gen_info.py               # nuScenes metadata extraction
+├── tools/gen_index.py              # Database/query index generation
+├── tools/gen_range.py              # PY/RY/RP three-view generation
+├── tools/runner.py                 # Training and evaluation utilities
+├── tools/utils.py                  # Shared configuration/path helpers
+├── train.py                        # Training entry point
+├── test.py                         # Test/evaluation entry point
+└── requirements.txt                # Core Python package versions
+```
+
+### Dataset Preparation (nuScenes)
+
+Download nuScenes **v1.0-trainval** and **v1.0-test**, including their sensor samples and metadata, according to the dataset license. Place both versions under the nuScenes root directory expected by the devkit.
+
+Choose your local dataset root using the environment variable `NUSCENES_ROOT`, or edit `data.data_root_dir` in `config/config.yaml`.
+
+```bash
+export NUSCENES_ROOT=/path/to/nuscenes
+
+# 1. Generate metadata files (BS, SON, SHV, SQ).
+python -m tools.gen_info
+
+# 2. Generate database/query split files.
+python -m tools.gen_index
+
+# 3. Generate three-view LiDAR .npz files.
+python -m tools.gen_range
+```
+
+After preprocessing, the relevant files should be arranged as follows:
+
+```text
+/path/to/nuscenes/
+├── samples/
+│   ├── CAM_FRONT/...              # Original nuScenes images
+│   ├── LIDAR_TOP/...              # Original nuScenes point clouds
+│   └── RANGE_DOFU_3VIEW/
+│       └── <LiDAR sample name>.npz
+├── nuscenes_infos-bs.pkl
+├── nuscenes_infos-son.pkl
+├── nuscenes_infos-shv.pkl
+├── nuscenes_infos-sq.pkl
+├── bs_db.npy
+├── bs_train_query.npy
+├── bs_val_query.npy
+├── bs_test_query.npy
+├── son_db.npy
+├── son_query.npy
+├── shv_db.npy
+├── shv_query.npy
+└── ...
+```
+
+Each generated LiDAR `.npz` contains `py`, `ry`, `rp`, `pitch_min`, and `pitch_max`. The three view sizes generated by this code are **PY: 32×768**, **RY: 64×768**, and **RP: 64×32**. The loader pads these to a common `3×64×768` tensor without changing the underlying three-view data.
+
+**If you already generated these files using the older experimental code, you do not need to recompute them.** Set `data.lidar_view_dir` in `config/config.yaml` to your *existing* folder relative to the nuScenes root. It may use a different name; no directory rename is necessary. This setting is shared by training, evaluation, and preprocessing.
 
 ### Training
 
+The original nuScenes configuration is retained: six surrounding cameras, image resize **192×512**, four triplet negatives, margin **0.5**, initial learning rate **1e-5**, StepLR step **6** / gamma **0.5**, and **120 epochs**. The feature cache is refreshed every **3 epochs** and also initialized before the first training epoch when missing.
+
+The visual branch is initialized using a local ConvNeXtV2-Atto `.safetensors` checkpoint. Place that checkpoint in the path specified by `runner.convnextv2_ckpt_path` in `config/config.yaml`, or point the field to its actual absolute path. The example path is a placeholder; the pretrained file is **not** included.
+
 ```bash
-# TODO: Add verified training entry point and configuration example.
+export NUSCENES_ROOT=/path/to/nuscenes
+# Edit runner.convnextv2_ckpt_path in config/config.yaml first.
+python train.py --config config/config.yaml
 ```
+
+Training checkpoints are saved under `runs/checkpoints/` as `DoFuNet_epoch_<N>.pth.tar`, e.g. `DoFuNet_epoch_120.pth.tar`; validation and cache files are stored in their respective `runs/` subdirectories. To resume, set `runner.resume_path` in the YAML to your checkpoint. If you switch to a different experiment/checkpoint, remove any stale cached features before training.
+
+**Checkpoint compatibility:** the original neural layers and their `state_dict` parameter names are preserved; only the *outer class name* and file names have changed. Existing checkpoints containing a `net` state dictionary can still be selected by path. The original checkpoint filename itself does not need to be renamed.
 
 ### Evaluation
 
+Provide a **trained fused DoFu-Net** checkpoint explicitly. Do not substitute a visual-only ablation checkpoint or the ConvNeXtV2 backbone initialization weights. By default, the script evaluates BS, SON, and SHV; SQ is optional.
+
 ```bash
-# TODO: Add verified evaluation entry point and output description.
+export NUSCENES_ROOT=/path/to/nuscenes
+python test.py \
+  --config config/config.yaml \
+  --checkpoint runs/checkpoints/DoFuNet_epoch_120.pth.tar \
+  --splits BS SON SHV
+
+# Optional: test just one region, or include SQ if its query files exist.
+python test.py --checkpoint /path/to/your/trained_dofunet.pth.tar --splits SHV
 ```
+
+The evaluator extracts **256-D** global descriptors, retrieves candidates using FAISS L2 search, and reports Recall@1/5/10/20, precision-recall curves, ROC curves, and maximum F1. Outputs are written under `runs/results/<SPLIT>/` with a combined `runs/results/nuscenes_summary.csv`. The matching radius used by the supplied code is **9 m**.
 
 ### Pretrained Weights
 
 | Dataset | Checkpoint | Notes |
 |:--|:--|:--|
-| nuScenes | To be added | Include model and evaluation configuration |
-| AV2S | To be added | Include model and evaluation configuration |
-| NCLT | To be added | Include model and evaluation configuration |
+| nuScenes | To be released | The fused DoFu-Net trained checkpoint is not included in this source package |
+| AV2S | To be added | Dataset-specific implementation and checkpoint not included here |
+| NCLT | To be added | Dataset-specific implementation and checkpoint not included here |
 
 ---
 
