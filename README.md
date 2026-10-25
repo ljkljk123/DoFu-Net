@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/cqu1.png" height="150" alt="XXXXXXXXX University" />
-</p>
-
 <h1 align="center">DoFu-Net: A Tri-Branch Fusion Network for LiDAR-Camera Place Recognition</h1>
 
 <p align="center">
