@@ -143,23 +143,23 @@ The following animations visualize the **top-1 place recognition results on Seq0
 <table align="center">
   <tr>
     <td align="center">
-      <a href="assets/gifs/DoFu/seq02_matches3d.gif"><img src="assets/gifs/DoFu/seq02_matches3d.gif" width="170" alt="DoFu-Net Seq02 place recognition matches" /></a>
+      <a href="assets/gifs/DoFu/seq02_matches3d.gif"><img src="assets/gifs/DoFu/seq02_matches3d.gif" width="150" alt="DoFu-Net Seq02 place recognition matches" /></a>
       <br/><strong>DoFu-Net</strong>
     </td>
     <td align="center">
-      <a href="assets/gifs/LCPR/seq02_matches3d.gif"><img src="assets/gifs/LCPR/seq02_matches3d.gif" width="170" alt="LCPR Seq02 place recognition matches" /></a>
+      <a href="assets/gifs/LCPR/seq02_matches3d.gif"><img src="assets/gifs/LCPR/seq02_matches3d.gif" width="150" alt="LCPR Seq02 place recognition matches" /></a>
       <br/><strong>LCPR</strong>
     </td>
     <td align="center">
-      <a href="assets/gifs/AdaFusion/seq02_matches3d.gif"><img src="assets/gifs/AdaFusion/seq02_matches3d.gif" width="170" alt="AdaFusion Seq02 place recognition matches" /></a>
+      <a href="assets/gifs/AdaFusion/seq02_matches3d.gif"><img src="assets/gifs/AdaFusion/seq02_matches3d.gif" width="150" alt="AdaFusion Seq02 place recognition matches" /></a>
       <br/><strong>AdaFusion</strong>
     </td>
     <td align="center">
-      <a href="assets/gifs/MinkLoc++/seq02_matches3d.gif"><img src="assets/gifs/MinkLoc++/seq02_matches3d.gif" width="170" alt="MinkLoc++ Seq02 place recognition matches" /></a>
+      <a href="assets/gifs/MinkLoc++/seq02_matches3d.gif"><img src="assets/gifs/MinkLoc++/seq02_matches3d.gif" width="150" alt="MinkLoc++ Seq02 place recognition matches" /></a>
       <br/><strong>MinkLoc++</strong>
     </td>
     <td align="center">
-      <a href="assets/gifs/UMF/seq02_matches3d.gif"><img src="assets/gifs/UMF/seq02_matches3d.gif" width="170" alt="UMF Seq02 place recognition matches" /></a>
+      <a href="assets/gifs/UMF/seq02_matches3d.gif"><img src="assets/gifs/UMF/seq02_matches3d.gif" width="150" alt="UMF Seq02 place recognition matches" /></a>
       <br/><strong>UMF</strong>
     </td>
   </tr>
