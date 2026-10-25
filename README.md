@@ -23,7 +23,7 @@
 
 <!-- TODO: Replace this file with the exported overview figure from the manuscript. -->
 <p align="center">
-  <img src="assets/dofu_overview.png" width="95%" alt="Overview of DoFu-Net" />
+  <img src="assets/图片1.svg" width="95%" alt="Overview of DoFu-Net" />
 </p>
 
 **DoFu-Net** is a tri-branch LiDAR-camera place recognition framework that learns discriminative and robust **256-dimensional multimodal global descriptors** from LiDAR point clouds and panoramic multi-camera images. It integrates a geometry-guided LiDAR backbone, a panoramic visual continuity module, and lightweight cross-modal feature interactions.
