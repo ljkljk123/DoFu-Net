@@ -65,6 +65,9 @@ Building on the spherical three-view representation developed in our previous [D
 <p align="center">
   <img src="assets/LiDAR.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
 </p>
+<p align="center">
+  <img src="assets/图片3.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
+</p>
 
 ### 2. Panoramic Local Continuity Graph (LCG)
 
