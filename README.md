@@ -103,7 +103,7 @@ The Fusion Branch performs **low-rank multiplicative feature interaction**, cont
   <img src="assets/slam_demo.gif" width="88%" alt="DoFu-Net place recognition demo" />
 </p>
 
-**Full SLAM demonstration:** [Video link to be added]
+**Full SLAM demonstration:** [https://www.bilibili.com/video/BV1fbHg6UEpQ/?share_source=copy_web&vd_source=646c84d0e91d0a42c3b1130dc776744e]
 
 ### How the Modules Work
 
