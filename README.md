@@ -140,19 +140,6 @@ Experiments are conducted on **nuScenes**, **Argoverse 2 Sensor (AV2S)**, **NCLT
   <img src="assets/benchmark.png" width="95%" alt="Public-dataset benchmark results" />
 </p>
 
-### Robustness and Efficiency
-
-- **LiDAR occlusion:** At **90° sector occlusion**, the LiDAR branch achieves a **36.26% relative gain** in mean Recall@1 over RangePlace across the evaluated AV2S sequences.
-- **Single-modality degradation:** Fused-descriptor mean Recall@1 reaches **94.53%** with smoke-degraded visual inputs and **94.74%** with occluded LiDAR inputs.
-- **Extrinsic perturbation:** Evaluated under both joint Database/Query perturbations and Query-only perturbations, covering Roll, Pitch, Yaw, and translation.
-- **Cross-platform tests:** Evaluated on three real-world sequences collected with a six-camera, 16-beam-LiDAR platform.
-- **Model efficiency:** **10.75 M** parameters, approximately **0.26 GB** measured GPU memory, and **12.76 ms** mean end-to-end query time on the three AV2S sequences using the evaluation setup reported in the paper.
-
-<!-- TODO: Insert carefully selected robustness comparisons. -->
-<p align="center">
-  <img src="assets/robustness.png" width="95%" alt="Robustness experiments" />
-</p>
-
 ---
 
 ## 🗂️ Datasets
