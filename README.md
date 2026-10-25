@@ -89,7 +89,7 @@ The Fusion Branch performs **low-rank multiplicative feature interaction**, cont
 
 <!-- TODO: Export fusion-branch figure from the manuscript. -->
 <p align="center">
-  <img src="assets/fusion.png" width="90%" alt="LiDAR-camera fusion branch" />
+  <img src="assets/图片7.svg" width="90%" alt="LiDAR-camera fusion branch" />
 </p>
 
 ---
