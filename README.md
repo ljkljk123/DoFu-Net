@@ -2,6 +2,7 @@
 
 <p align="center">
   XXXXX UNIVERSITY · XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  The complete network implementation and pretrained checkpoints will be released after the completion of the peer-review process.
 </p>
 
 <p align="center">
