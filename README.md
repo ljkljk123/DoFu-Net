@@ -65,9 +65,6 @@ Building on the spherical three-view representation developed in our previous [D
 <p align="center">
   <img src="assets/图片3.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
 </p>
-<p align="center">
-  <img src="assets/A1.svg" width="90%" alt="Axial Fusion Layer and Write Back Gate" />
-</p>
 
 ### 2. Panoramic Local Continuity Graph (LCG)
 
@@ -81,7 +78,7 @@ The proposed **LCG** module models adaptive local structural relationships in th
 
 <!-- TODO: Replace with the LCG figure or graph-animation thumbnail. -->
 <p align="center">
-  <img src="assets/lcg.png" width="90%" alt="Local Continuity Graph module" />
+  <img src="assets/图片5.svg" width="90%" alt="Local Continuity Graph module" />
 </p>
 
 ### 3. Lightweight LiDAR-Camera Fusion
