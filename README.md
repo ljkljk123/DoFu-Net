@@ -507,14 +507,6 @@ The evaluator extracts a clean database feature set once per city and reuses it 
 
 **Scope of this AV2S addition:** The code above reproduces the two **single-modality** robustness protocols only. It does not provide the full AV2S train/validation split construction, AV2S full-model training, other-method baselines, fusion-head comparison experiment, or cross-modal degradation experiment. Their absence does not affect the nuScenes implementation in this repository.
 
-### Pretrained Weights
-
-| Dataset | Checkpoint | Notes |
-|:--|:--|:--|
-| nuScenes | To be released | The fused DoFu-Net trained checkpoint is not included in this source package |
-| AV2S | To be released | Visual/LiDAR robustness evaluation scripts included; complete training pipeline and checkpoint not included |
-| NCLT | To be added | Dataset-specific implementation and checkpoint not included here |
-
 ---
 
 ## 📄 Citation
