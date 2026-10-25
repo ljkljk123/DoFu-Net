@@ -100,7 +100,7 @@ The Fusion Branch performs **low-rank multiplicative feature interaction**, cont
 
 <!-- TODO: Create a concise, muted preview GIF; link it to a complete video. -->
 <p align="center">
-  <img src="assets/dofu_slam_preview.gif" width="88%" alt="DoFu-Net place recognition demo" />
+  <img src="assets/slam_demo.gif" width="88%" alt="DoFu-Net place recognition demo" />
 </p>
 
 **Full SLAM demonstration:** [Video link to be added]
