@@ -1,0 +1,27 @@
+# AV2S robustness reproduction only. Edit path placeholders before running.
+data:
+  data_root_dir: /path/to/argoverse2
+  # Index/info files previously produced by the AV2S preparation pipeline.
+  database_path: /path/to/AV2S/av2_db.npy
+  test_info_path: /path/to/AV2S/av2_infos_test.pkl
+  # Set this to the EXISTING directory of clean PY/RY/RP .npz files; no need to rename it.
+  range_data_dir: /path/to/AV2S/RANGE_DOFU_3VIEW
+  camera_channels:
+    - ring_front_center
+    - ring_front_left
+    - ring_front_right
+    - ring_side_left
+    - ring_side_right
+    - ring_rear_left
+    - ring_rear_right
+runner:
+  nonTrivPosDistThres: 9
+  resize: [160, 448]
+  num_workers_test: 8
+  num_cam: 7
+  visual_backbone: convnextv2_atto
+  # Optional for evaluating a FULL DoFu-Net checkpoint; full state is loaded afterwards.
+  convnextv2_ckpt_path: ''
+  # Select a full DoFu_Camera / DoFu_LiDAR checkpoint for the corresponding experiment.
+  eval_weights: weights/DoFu_Camera.pth.tar
+  result_dir: runs/results_av2/
