@@ -507,7 +507,7 @@ The evaluator extracts a clean database feature set once per city and reuses it 
 
 ## 📌 License & Contact
 
-- **License:** [To be selected and added as a **LICENSE** file.]
-- **Academic inquiries / commercial use:** [Add the appropriate contact and usage conditions.]
+- **License:** [Apache-2.0 license]
+- **Academic inquiries / commercial use:** [xxx.mail.com]
 
 <!-- TODO before publishing: replace all pending links and image placeholders; verify setup commands; ensure claimed released assets actually exist. -->
