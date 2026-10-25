@@ -209,11 +209,21 @@ Datasets must be obtained independently from their respective providers. Please 
 
 ### Environment
 
-- OS: **[to be confirmed]**
-- Python: **[to be confirmed]**
-- PyTorch / CUDA: **[to be confirmed]**
-- Required packages: **[to be generated from environment specification]**
+The following versions are taken from the exported Conda environment (`dome`) and pip package list.
+
+- **OS:** Linux (distribution and release version not recorded in the environment exports)
+- **Conda environment:** `dome`
+- **Python:** 3.10.13
+- **PyTorch:** 2.1.1+cu118
+- **TorchVision / TorchAudio:** 0.16.1+cu118 / 2.1.1+cu118
+- **CUDA:** 11.8 (PyTorch CUDA build; Conda `cuda-cudart` 11.8.89)
+- **FAISS:** `faiss-gpu` 1.8.0
+- **Numerical and scientific packages:** NumPy 1.26.2, SciPy 1.11.4, pandas 2.1.3, scikit-learn 1.3.2
+- **Deep-learning and image-processing packages:** timm 0.9.2, einops 0.7.0, OpenCV 4.8.1.78, Pillow 10.1.0
+- **Dataset and utility packages:** nuscenes-devkit 1.1.10, h5py 3.7.0, PyYAML 6.0.1, tqdm 4.66.1
 - Training hardware reported in the paper: **NVIDIA RTX 4060 GPU**
+
+**Note:** These are installed versions observed in the provided environment exports, not a verified minimal dependency list. The full export also contains machine-specific paths and additional packages; portable installation instructions will be finalized with the released code.
 
 ### Repository Setup
 
