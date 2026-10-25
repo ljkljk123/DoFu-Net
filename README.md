@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="assets/cqu.png" height="150" alt="Chongqing University" />
+  <img src="assets/cqu1.png" height="150" alt="Chongqing University" />
 </p>
 
 <h1 align="center">DoFu-Net: A Tri-Branch Fusion Network for LiDAR-Camera Place Recognition</h1>
 
 <p align="center">
-  CHONGQING UNIVERSITY · Key Laboratory of Optoelectronic Technology and Systems of Ministry of Education
+  XXXXX UNIVERSITY · XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 </p>
 
 <p align="center">
@@ -506,24 +506,6 @@ python -m robustness.lidar.test_av2_lidar_occ \
 The evaluator extracts a clean database feature set once per city and reuses it for all occlusion degrees, recomputing only the occluded query descriptors. Summary CSV: **runs/results_av2/lidar_occ_robustness/robustness_summary_lidar.csv**; per-condition directories also include PR-curve samples, Top-K matches, and saved feature matrices. Both evaluators support **--force_recompute** to invalidate previous feature caches when using different checkpoints or changed inputs. Without this flag, existing feature caches may be loaded regardless of whether the **--weights** argument has changed, so **never reuse stale cached descriptors when changing checkpoints**.
 
 **Scope of this AV2S addition:** The code above reproduces the two **single-modality** robustness protocols only. It does not provide the full AV2S train/validation split construction, AV2S full-model training, other-method baselines, fusion-head comparison experiment, or cross-modal degradation experiment. Their absence does not affect the nuScenes implementation in this repository.
-
----
-
-## 📄 Citation
-
-If you find DoFu-Net useful, please cite the paper:
-
-**DoFu-Net: A Tri-Branch Fusion Network for LiDAR-Camera Place Recognition**
-
-*Manuscript under revision for ISPRS Journal of Photogrammetry and Remote Sensing.*
-
-The official BibTeX entry will be added when the final bibliographic information is available.
-
-### Related Work
-
-The spherical three-view representation builds upon our earlier work:
-
-- [Dome: Fast and Robust LiDAR Place Recognition via Spherical Three-View Feature Fusion](https://github.com/ljkljk123/Dome-master), *Measurement*, 2026.
 
 ---
 
