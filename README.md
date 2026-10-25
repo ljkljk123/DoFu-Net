@@ -241,8 +241,8 @@ python -m pip install -r requirements.txt
 Clone this repository after publishing it to GitHub, then run all following commands from its root directory:
 
 ```bash
-# Replace <YOUR_GITHUB_REPOSITORY_URL> with the published DoFu-Net repository URL.
-git clone <YOUR_GITHUB_REPOSITORY_URL> DoFu-Net-nuScenes
+# Replace [https://github.com/ljkljk123/DoFu-Net.git] with the published DoFu-Net repository URL.
+git clone https://github.com/ljkljk123/DoFu-Net.git DoFu-Net-nuScenes
 cd DoFu-Net-nuScenes
 
 # Verify the installed packages and project imports.
