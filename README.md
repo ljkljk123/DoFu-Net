@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/cqu1.png" height="150" alt="Chongqing University" />
+  <img src="assets/cqu1.png" height="150" alt="XXXXXXXXX University" />
 </p>
 
 <h1 align="center">DoFu-Net: A Tri-Branch Fusion Network for LiDAR-Camera Place Recognition</h1>
@@ -54,7 +54,7 @@ The network contains three branches:
 
 ### 1. Geometry-Guided LiDAR Backbone
 
-Building on the spherical three-view representation developed in our previous [Dome](https://github.com/ljkljk123/Dome-master) work, DoFu-Net introduces **learnable, progressive multi-view feature interaction** rather than reusing Dome's handcrafted descriptor-matching pipeline.
+DoFu-Net employs spherical Pitch-Yaw (PY), Radius-Yaw (RY), and Radius-Pitch (RP) representations to capture complementary LiDAR geometric information. Through learnable, geometry-guided attention mechanisms, the proposed backbone progressively integrates multi-view features to enhance geometric representation learning.
 
 - **Pitch interaction:** associates the **PY and RP views** through their shared Pitch coordinate.
 - **Yaw interaction:** associates the **PY and RY views** through their shared Yaw coordinate.
