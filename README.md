@@ -1,8 +1,11 @@
+<p align="center">
+  <img src="assets/cqu.png" height="150" alt="Chongqing University" />
+</p>
+
 <h1 align="center">DoFu-Net: A Tri-Branch Fusion Network for LiDAR-Camera Place Recognition</h1>
 
 <p align="center">
-  XXXXX UNIVERSITY · XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  The complete network implementation and pretrained checkpoints will be released after the completion of the peer-review process.
+  CHONGQING UNIVERSITY · Key Laboratory of Optoelectronic Technology and Systems of Ministry of Education
 </p>
 
 <p align="center">
